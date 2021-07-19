@@ -65,7 +65,7 @@ import java.nio.channels.spi.SelectorProvider;
  *
  * <p> Server-socket channels are safe for use by multiple concurrent threads.
  * </p>
- *
+ * 相当于 BIO 中的 ServerSocket，主要用于服务端与客户端建立连接通信的 channel。
  * @author Mark Reinhold
  * @author JSR-51 Expert Group
  * @since 1.4
@@ -88,7 +88,7 @@ public abstract class ServerSocketChannel
 
     /**
      * Opens a server-socket channel.
-     *
+     * 获取一个 ServerSocketChannel实例，具体实现依赖底层操作系统
      * <p> The new channel is created by invoking the {@link
      * java.nio.channels.spi.SelectorProvider#openServerSocketChannel
      * openServerSocketChannel} method of the system-wide default {@link
@@ -220,6 +220,7 @@ public abstract class ServerSocketChannel
     public abstract ServerSocket socket();
 
     /**
+     * 与一个客户端channel建立连接，返回该客户端的存根 SocketChannel
      * Accepts a connection made to this channel's socket.
      *
      * <p> If this channel is in non-blocking mode then this method will
